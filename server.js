@@ -143,7 +143,8 @@ app.use((error, req, res, next) => {
 });
 
 mongoose
-    .connect(MONGODB_URI)
+    .connect('mongodb+srv://Babila:GlamHouse@glamhouse.4byzd.mongodb.net/GlamHouse?retryWrites=true&w=majority') //(MONGODB_URI)
+
     .then(result => {
         app.listen(process.env.PORT || 3000);
     })

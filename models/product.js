@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const productSchema = new Schema({
+const productSchema = new Schema({ //using the constroctor with mongoose. This is the blueprint schema
   title: {
     type: String,
     required: true
@@ -104,5 +104,5 @@ module.exports = mongoose.model('Product', productSchema);
 //       });
 //   }
 // }
-
+//
 // module.exports = Product;
