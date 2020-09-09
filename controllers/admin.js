@@ -180,7 +180,7 @@ exports.getProducts = (req, res, next) => {
       userId: req.user._id
     })
     // .select('title price -_id')
-    // .populate('userId', 'name')
+    // .populate('userId', 'name') allow moongoose to give you all the data and not just by id
     .then(products => {
       console.log(products);
       res.render('admin/products', {

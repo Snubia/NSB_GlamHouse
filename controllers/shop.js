@@ -13,7 +13,7 @@ exports.getProducts = (req, res, next) => {
   const page = +req.query.page || 1;
   let totalItems;
 
-  Product.find()
+  Product.find() // find will automatically give an array and not a cursor
     .countDocuments()
     .then(numProducts => {
       totalItems = numProducts;
@@ -43,7 +43,7 @@ exports.getProducts = (req, res, next) => {
 
 exports.getProduct = (req, res, next) => {
   const prodId = req.params.productId;
-  Product.findByPk(prodId)
+  Product.findByPk(prodId) // using this moongose method to find a single product.
     .then(product => {
       res.render('shop/product-detail', {
         product: product,
