@@ -13,3 +13,13 @@ Templating Engine for the front end (views)
 **Moongoose**
 
 - database, model schema, connection, controller function etc
+
+**Session**
+
+For cookies (great for storing data on the client site and the downside is the user has access and can manipulate it. Not great for sensitive data not limited to be used with sessions) and secured login
+
+**Session** are greatt for storing data on the server there for we can save sensitive data on sessions like authentification or cart items. Can use a cookie to be identified.
+
+[More on Sessions](https://www.quora.com/What-is-a-session-in-a-Web-Application)
+
+[More on Cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies)
