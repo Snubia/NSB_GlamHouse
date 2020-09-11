@@ -1,7 +1,9 @@
 const path = require('path');
 
 const express = require('express');
-const { body } = require('express-validator/check');
+const {
+  body
+} = require('express-validator/check');
 
 const adminController = require('../controllers/admin');
 const isAuth = require('../middleware/is-auth');
@@ -9,7 +11,7 @@ const isAuth = require('../middleware/is-auth');
 const router = express.Router();
 
 // /admin/add-product => GET
-router.get('/add-product', isAuth, adminController.getAddProduct);
+router.get('/add-product', isAuth, adminController.getAddProduct); // takes from the middleware to see if the user is logged in 
 
 // /admin/products => GET
 router.get('/products', isAuth, adminController.getProducts);
@@ -19,13 +21,18 @@ router.post(
   '/add-product',
   [
     body('title')
-      .isString()
-      .isLength({ min: 3 })
-      .trim(),
+    .isString()
+    .isLength({
+      min: 3
+    })
+    .trim(),
     body('price').isFloat(),
     body('description')
-      .isLength({ min: 5, max: 400 })
-      .trim()
+    .isLength({
+      min: 5,
+      max: 400
+    })
+    .trim()
   ],
   isAuth,
   adminController.postAddProduct
@@ -37,13 +44,18 @@ router.post(
   '/edit-product',
   [
     body('title')
-      .isString()
-      .isLength({ min: 3 })
-      .trim(),
+    .isString()
+    .isLength({
+      min: 3
+    })
+    .trim(),
     body('price').isFloat(),
     body('description')
-      .isLength({ min: 5, max: 400 })
-      .trim()
+    .isLength({
+      min: 5,
+      max: 400
+    })
+    .trim()
   ],
   isAuth,
   adminController.postEditProduct

@@ -13,6 +13,8 @@ router.get('/products', shopController.getProducts);
 
 router.get('/products/:productId', shopController.getProduct);
 
+// these take from the middleware because they need to be proteted
+
 router.get('/cart', isAuth, shopController.getCart);
 
 router.post('/cart', isAuth, shopController.postCart);

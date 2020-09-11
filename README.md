@@ -23,3 +23,15 @@ For cookies (great for storing data on the client site and the downside is the u
 [More on Sessions](https://www.quora.com/What-is-a-session-in-a-Web-Application)
 
 [More on Cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies)
+
+**Bcryptjs**
+
+To encrypt password (bcrypt.hash(password, 12); retun a promise)
+
+[More on Bcrypt](https://github.com/dcodeIO/bcrypt.js)
+
+**Csurf**
+
+CSRF Attacks; Cross-Site Request Forgery to protect the website (npm install csurf) this package allow to generate a token enbeded in our code for each action and it checks if the incoming request has the token. the fake website won't be able to make request to this page because the they will be missing the Token.
+
+[More on CSRF](https://www.acunetix.com/websitesecurity/csrf-attacks/)

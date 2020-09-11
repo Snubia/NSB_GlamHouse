@@ -18,9 +18,11 @@ const shopController = require('./controllers/shop');
 const isAuth = require('./middleware/is-auth');
 const User = require('./models/user');
 
-const MONGODB_URI = `mongodb+srv://${process.env.MONGO_USER}:${
-  process.env.MONGO_PASSWORD
-}@glamhouse.4byzd.mongodb.net/${process.env.MONGO_DEFAULT_DATABASE}`;
+const MONGODB_URI = 'mongodb+srv://Babila:GlamHouse@glamhouse.4byzd.mongodb.net/GlamHouse?';
+
+// const MONGODB_URI = `mongodb+srv://${process.env.MONGO_USER}:${
+//   process.env.MONGO_PASSWORD
+// }@glamhouse.4byzd.mongodb.net/${process.env.MONGO_DEFAULT_DATABASE}`;
 
 const app = express();
 const store = new MongoDBStore({
@@ -120,6 +122,8 @@ app.post('/create-order', isAuth, shopController.postOrder);
 
 app.use(csrfProtection);
 app.use((req, res, next) => {
+    //res.locals.csrfToken = req.csrfToken();
+    res.locals.isAuthenticated = req.session.isLoggedIn;
     res.locals.csrfToken = req.csrfToken();
     next();
 });
@@ -143,7 +147,10 @@ app.use((error, req, res, next) => {
 });
 
 mongoose
-    .connect('mongodb+srv://Babila:GlamHouse@glamhouse.4byzd.mongodb.net/GlamHouse?retryWrites=true&w=majority') //(MONGODB_URI)
+    .connect(MONGODB_URI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    })
 
     .then(result => {
         app.listen(process.env.PORT || 3000);
@@ -151,3 +158,13 @@ mongoose
     .catch(err => {
         console.log(err);
     });
+
+//     mongoose
+// .connect(process.env.MONGO_URI, {
+// useUnifiedTopology: true,
+// useNewUrlParser: true,
+// })
+// .then(() => console.log('DB Connected!'))
+// .catch(err => {
+// console.log(DB Connection Error: ${err.message});
+// });
