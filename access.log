@@ -39,3 +39,4 @@
 ::1 - - [11/Sep/2020:07:29:27 +0000] "GET / HTTP/1.1" 500 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36"
 ::1 - - [11/Sep/2020:07:37:08 +0000] "GET / HTTP/1.1" 500 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36"
 ::1 - - [11/Sep/2020:07:37:10 +0000] "GET / HTTP/1.1" 500 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36"
+::1 - - [11/Sep/2020:08:06:57 +0000] "GET / HTTP/1.1" 500 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36"

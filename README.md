@@ -35,3 +35,11 @@ To encrypt password (bcrypt.hash(password, 12); retun a promise)
 CSRF Attacks; Cross-Site Request Forgery to protect the website (npm install csurf) this package allow to generate a token enbeded in our code for each action and it checks if the incoming request has the token. the fake website won't be able to make request to this page because the they will be missing the Token.
 
 [More on CSRF](https://www.acunetix.com/websitesecurity/csrf-attacks/)
+
+**SendGrid** / **Nodemailer**
+
+Email sending service allong with node mailer
+
+[More on SendGrid](https://nodemailer.com/about/)
+
+[More on Nodemailer](https://www.acunetix.com/websitesecurity/csrf-attacks/)
