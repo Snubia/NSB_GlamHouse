@@ -161,7 +161,7 @@ exports.postSignup = (req, res, next) => {
       res.redirect('/login');
       // return transporter.sendMail({
       //   to: email,
-      //   from: 'shop@node-complete.com',
+      //   from: 'glamhouse@nsbdev.com',
       //   subject: 'Signup succeeded!',
       //   html: '<h1>You successfully signed up!</h1>'
       // });
@@ -180,6 +180,7 @@ exports.postLogout = (req, res, next) => {
   });
 };
 
+// reset the password the view is reser.ejs
 exports.getReset = (req, res, next) => {
   let message = req.flash('error');
   if (message.length > 0) {
@@ -194,6 +195,7 @@ exports.getReset = (req, res, next) => {
   });
 };
 
+// this execute the code after you click on the reser button
 exports.postReset = (req, res, next) => {
   crypto.randomBytes(32, (err, buffer) => {
     if (err) {
@@ -202,24 +204,26 @@ exports.postReset = (req, res, next) => {
     }
     const token = buffer.toString('hex');
     User.findOne({
-        email: req.body.email
+        email: req.body.email // finding the account with the email.
       })
       .then(user => {
         if (!user) {
-          req.flash('error', 'No account with that email found.');
+          req.flash('error', 'Account not found.');
           return res.redirect('/reset');
         }
         user.resetToken = token;
         user.resetTokenExpiration = Date.now() + 3600000;
         return user.save();
       })
+      // sending email with the node mailer
       .then(result => {
         res.redirect('/');
         transporter.sendMail({
           to: req.body.email,
-          from: 'shop@node-complete.com',
+          from: 'glamhouse@nsbdev.com',
           subject: 'Password reset',
           html: `
+          <p>Hello Glambabe,</p>
             <p>You requested a password reset</p>
             <p>Click this <a href="http://localhost:3000/reset/${token}">link</a> to set a new password.</p>
           `
@@ -263,6 +267,7 @@ exports.getNewPassword = (req, res, next) => {
     });
 };
 
+// replace the old password with the new one
 exports.postNewPassword = (req, res, next) => {
   const newPassword = req.body.password;
   const userId = req.body.userId;

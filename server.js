@@ -122,10 +122,10 @@ app.post('/create-order', isAuth, shopController.postOrder);
 
 app.use(csrfProtection);
 app.use((req, res, next) => {
-    //res.locals.csrfToken = req.csrfToken();
-    res.locals.isAuthenticated = req.session.isLoggedIn;
     res.locals.csrfToken = req.csrfToken();
-    next();
+    // res.locals.isAuthenticated = req.session.isLoggedIn;
+    // res.locals.csrfToken = req.csrfToken();
+    // next();
 });
 
 app.use('/admin', adminRoutes);
@@ -153,7 +153,7 @@ mongoose
     })
 
     .then(result => {
-        app.listen(process.env.PORT || 3000);
+        app.listen(process.env.PORT || 5000);
     })
     .catch(err => {
         console.log(err);
