@@ -43,3 +43,15 @@ Email sending service allong with node mailer
 [More on SendGrid](https://nodemailer.com/about/)
 
 [More on Nodemailer](https://www.acunetix.com/websitesecurity/csrf-attacks/)
+
+**Express validator**
+
+Validates email, password,
+
+**Multer**
+
+Picture upload and pdf docs
+
+**Stripe**
+
+Checkout methods

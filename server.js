@@ -18,7 +18,8 @@ const shopController = require('./controllers/shop');
 const isAuth = require('./middleware/is-auth');
 const User = require('./models/user');
 
-const MONGODB_URI = 'mongodb+srv://Babila:GlamHouse@glamhouse.4byzd.mongodb.net/GlamHouse?';
+//const MONGODB_URI = 'mongodb+srv://Babila:GlamHouse@glamhouse.4byzd.mongodb.net/GlamHouse?';
+const MONGODB_URI = 'mongodb+srv://Nunu:GlamHouse@glamhouse.7ldue.mongodb.net/Glamies';
 
 // const MONGODB_URI = `mongodb+srv://${process.env.MONGO_USER}:${
 //   process.env.MONGO_PASSWORD
@@ -93,10 +94,12 @@ app.use(
     })
 );
 
+app.use(csrfProtection);
 app.use(flash());
 
 app.use((req, res, next) => {
     res.locals.isAuthenticated = req.session.isLoggedIn;
+    res.locals.csrfToken = req.csrfToken();
     next();
 });
 
@@ -105,7 +108,7 @@ app.use((req, res, next) => {
     if (!req.session.user) {
         return next();
     }
-    User.findByPk(req.session.user._id)
+    User.findById(req.session.user._id)
         .then(user => {
             if (!user) {
                 return next();
@@ -118,15 +121,15 @@ app.use((req, res, next) => {
         });
 });
 
-app.post('/create-order', isAuth, shopController.postOrder);
+//app.post('/create-order', isAuth, shopController.postOrder);
 
-app.use(csrfProtection);
-app.use((req, res, next) => {
-    res.locals.csrfToken = req.csrfToken();
-    // res.locals.isAuthenticated = req.session.isLoggedIn;
-    // res.locals.csrfToken = req.csrfToken();
-    // next();
-});
+// app.use(csrfProtection);
+// app.use((req, res, next) => {
+//     res.locals.csrfToken = req.csrfToken();
+//     // res.locals.isAuthenticated = req.session.isLoggedIn;
+//     // res.locals.csrfToken = req.csrfToken();
+//     // next();
+// });
 
 app.use('/admin', adminRoutes);
 app.use(shopRoutes);

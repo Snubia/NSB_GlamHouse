@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const PDFDocument = require('pdfkit');
-const stripe = require('stripe')(process.env.STRIPE_KEY);
+const stripe = require('stripe')('sk_test_51HQzR1I6uADb2xqWiaTdqr6KoAljx8GRtSXOP19lmXIhegI5TBVssqAJucZ3qtxVRSA4U6SddCY7BaMvWM6GBpXT00kAA91UPW'); //(process.env.STRIPE_KEY);
 
 const Product = require('../models/product');
 const Order = require('../models/order');
@@ -18,7 +18,7 @@ exports.getProducts = (req, res, next) => {
     .then(numProducts => {
       totalItems = numProducts;
       return Product.find()
-        .skip((page - 1) * ITEMS_PER_PAGE)
+        .skip((page - 1) * ITEMS_PER_PAGE) // pagination
         .limit(ITEMS_PER_PAGE);
     })
     .then(products => {
@@ -43,7 +43,7 @@ exports.getProducts = (req, res, next) => {
 
 exports.getProduct = (req, res, next) => {
   const prodId = req.params.productId;
-  Product.findByPk(prodId) // using this moongose method to find a single product.
+  Product.findById(prodId) // using this moongose method to find a single product.
     .then(product => {
       res.render('shop/product-detail', {
         product: product,
@@ -112,7 +112,7 @@ exports.getCart = (req, res, next) => {
 
 exports.postCart = (req, res, next) => {
   const prodId = req.body.productId;
-  Product.findByPk(prodId)
+  Product.findById(prodId)
     .then(product => {
       return req.user.addToCart(product);
     })
@@ -238,7 +238,7 @@ exports.getOrders = (req, res, next) => {
 
 exports.getInvoice = (req, res, next) => {
   const orderId = req.params.orderId;
-  Order.findByPk(orderId)
+  Order.findById(orderId)
     .then(order => {
       if (!order) {
         return next(new Error('No order found.'));

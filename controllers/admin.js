@@ -103,7 +103,7 @@ exports.getEditProduct = (req, res, next) => {
     return res.redirect('/');
   }
   const prodId = req.params.productId;
-  Product.findByPk(prodId)
+  Product.findById(prodId)
     .then(product => {
       if (!product) {
         return res.redirect('/');
@@ -151,7 +151,7 @@ exports.postEditProduct = (req, res, next) => {
     });
   }
 
-  Product.findByPk(prodId)
+  Product.findById(prodId)
     .then(product => {
       if (product.userId.toString() !== req.user._id.toString()) {
         return res.redirect('/');
@@ -198,7 +198,7 @@ exports.getProducts = (req, res, next) => {
 
 exports.deleteProduct = (req, res, next) => {
   const prodId = req.params.productId;
-  Product.findByPk(prodId)
+  Product.findById(prodId)
     .then(product => {
       if (!product) {
         return next(new Error('Product not found.'));

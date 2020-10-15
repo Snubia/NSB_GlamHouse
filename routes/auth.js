@@ -48,7 +48,7 @@ router.post(
       }).then(userDoc => {
         if (userDoc) {
           return Promise.reject(
-            'E-Mail exists already, please pick a different one.'
+            'E-Mail already exits, please enter a different email.'
           );
         }
       });
@@ -56,7 +56,7 @@ router.post(
     .normalizeEmail(),
     body(
       'password',
-      'Please enter a password with only numbers and text and at least 5 characters.'
+      'Your password should have at leat 5 characters with only numbers and letters.'
     )
     .isLength({
       min: 5
@@ -69,7 +69,7 @@ router.post(
       req
     }) => {
       if (value !== req.body.password) {
-        throw new Error('Passwords have to match!');
+        throw new Error('Passwords do not match!');
       }
       return true;
     })
