@@ -2,7 +2,11 @@
 
 An E-commerce Website using Node.js, MongoDb, Ejs and Multer
 
-[Project Blueprint Doc](https://docs.google.com/document/d/16EprHSo8TWxUgoSLTqFjA9QAn3_UlqZ0C1YXt4vOSRo/edit?usp=sharing)
+**GlamHouse** is an ecommerce App that allow user to shop and sell any product. Users can view products without login it but have to be signed in to shop or sell. Stripe was used for the payment method on testing mode.
+
+# Demo
+
+![alt text](Demo.gif)
 
 # Technologies used
 
@@ -55,3 +59,15 @@ Picture upload and pdf docs
 **Stripe**
 
 Checkout methods
+
+# Links
+
+[deployed website](https://limitless-citadel-93108.herokuapp.com/)
+
+[Github repository](https://github.com/Snubia/NSB_GlamHouse.git)
+
+# For feedback, contributions or questions
+
+[Linkedin](https://www.linkedin.com/in/sandrine-nubia-975aa2172/)
+
+[Github](https://github.com/Snubia)
